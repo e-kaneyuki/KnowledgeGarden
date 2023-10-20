@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class UserRegisatrationServlet
@@ -28,8 +29,19 @@ public class UserRegistrationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String userID = request.getParameter("userID");
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+        
+        HttpSession session = request.getSession();
+        session.setAttribute("userID", userID);
+        session.setAttribute("userName", userName);
+        session.setAttribute("password", password);
+        
+        //ここで次のサーブレットへリダイレクト
+        response.sendRedirect("Login");
+        
+        
 	}
 
 }
