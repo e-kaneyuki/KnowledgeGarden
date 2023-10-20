@@ -62,7 +62,7 @@
         <div class="error-message" id="passwordMismatch" style="display: none;">
             パスワードとパスワード再確認が一致しません。
         </div>
-        <form action="loginServlet" method="post" onsubmit="return validateForm();">
+        <form action="UserRegistrationServlet" method="post" onsubmit="return validateForm();">
 			<div class="form-group">
 			    <label for="userID">ID:</label>
 			    <input type="text" id="userID" name="userID" required>
@@ -80,8 +80,8 @@
                 <input type="password" id="confirmPassword" name="confirmPassword" required>
             </div>
             <div class="button-container">
-                <button type="button" onclick="location.href='Login'" style="background-color: blue; color: white;">戻る</button>
-                <button type="submit" style="background-color: blue; color: white;">登録</button>
+                <button type="button" onclick="location.href='Login'">戻る</button>
+                <button type="submit">登録</button>
             </div>
         </form>
     </div>

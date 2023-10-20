@@ -72,8 +72,8 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="button-container">
-	            <button type="button" onclick="location.href='UserRegistrationServlet'" style="background-color: blue; color: white;">ユーザー登録</button>
-                <button type="submit" style="background-color: blue; color: white;">ログイン</button>
+	            <button type="button" onclick="location.href='UserRegistrationServlet'">ユーザー登録</button>
+                <button type="submit">ログイン</button>
                 
             </div>
         </form>
