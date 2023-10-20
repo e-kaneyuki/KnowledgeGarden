@@ -71,32 +71,13 @@
                 <label for="password">パスワード:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <div class="form-group">
-                <label for="confirmPassword">パスワード再確認:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required>
-            </div>
             <div class="button-container">
-	            <button type="button" onclick="location.href='registration'">ユーザー登録</button>
-                <button type="submit">ログイン</button>
+	            <button type="button" onclick="location.href='UserRegistrationServlet'" style="background-color: blue; color: white;">ユーザー登録</button>
+                <button type="submit" style="background-color: blue; color: white;">ログイン</button>
                 
             </div>
         </form>
     </div>
-    <script>
-        function validateForm() {
-            const password = document.getElementById("password").value;
-            const confirmPassword = document.getElementById("confirmPassword").value;
-            const errorElement = document.getElementById("passwordMismatch");
-
-            if (password !== confirmPassword) {
-                errorElement.style.display = "block";
-                return false;
-            } else {
-                errorElement.style.display = "none";
-                return true;
-            }
-        }
-    </script>
 </body>
 </html>
 
