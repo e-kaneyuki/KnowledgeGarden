@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
     <title>ユーザー登録画面</title>
     <style>
         body {
@@ -83,7 +84,7 @@
                 <button type="button" onclick="location.href='Login'">戻る</button>
                 <button type="submit">登録</button>
             </div>
-        </form>
+        </form>    
     </div>
     <script>
         function validateForm() {
