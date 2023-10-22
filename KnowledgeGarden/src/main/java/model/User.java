@@ -11,6 +11,11 @@ public class User implements Serializable {
 		this.name = name;
 		this.pass = pass;
 	}
+	//QuestionDAOで使用
+	public User(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 	
 	public int getId() {
 		return id;
