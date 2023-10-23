@@ -27,7 +27,7 @@ public class Question implements Serializable {
 	public String getContent() {
 		return content;
 	}
-
+    //Userはid,name
 	public User getUser() {
 		return user;
 	} 
