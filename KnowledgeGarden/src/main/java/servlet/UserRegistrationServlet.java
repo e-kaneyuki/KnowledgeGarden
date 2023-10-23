@@ -52,7 +52,7 @@ public class UserRegistrationServlet extends HttpServlet {
 	        session.setAttribute("password", password);
 	        
 	        //ここで次のサーブレットへリダイレクト
-	        response.sendRedirect("QuestionIndex");
+	        response.sendRedirect("IndexQuestion");
 	        
 		}
 		//もし登録に失敗した場合はどうするのか	
