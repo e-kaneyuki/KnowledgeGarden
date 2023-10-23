@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.IndexQuestionLogic;
 import model.Question;
+import model.QuestionLogic;
 
 /**
  * Servlet implementation class QuestionIndexServlet
@@ -25,7 +25,7 @@ public class IndexQuestionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		IndexQuestionLogic queLogic = new IndexQuestionLogic();
+		QuestionLogic queLogic = new QuestionLogic();
 		List<Question> questions = queLogic.execute();
 		request.setAttribute("questions", questions);
 		
