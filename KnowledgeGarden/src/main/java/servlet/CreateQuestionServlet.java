@@ -47,7 +47,7 @@ public class CreateQuestionServlet extends HttpServlet {
 		if (judge) {
 			
 	        //ここで次のサーブレットへリダイレクト
-	        response.sendRedirect("QuestionIndex");
+	        response.sendRedirect("IndexQuestion");
 	        
 		}
 	}
