@@ -36,9 +36,6 @@ public class ShowQuestionServlet extends HttpServlet {
         
         AnswerLogic ansLog = new AnswerLogic();
         ansList = ansLog.findAnswerById(id);
-        for(Answer ans: ansList) {
-        	System.out.println(ans.getContent());
-        }
         if(ansList != null) {
         	request.setAttribute("ansList", ansList);	
         }
