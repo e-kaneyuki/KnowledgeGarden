@@ -8,9 +8,10 @@
 <title>QuestionIndex</title>
 <style>
     .styled-table {
-        width: 500px;
+        width: 80%; /* テーブルの幅を調整 */
         border-collapse: collapse;
         border: 1px solid #dcdcdc;
+        margin: 20px auto; /* テーブルを中央揃え */
     }
 
     .styled-table th {
@@ -27,14 +28,32 @@
     }
 
     .small-column {
-        font-size: 12px; /* カラム内のフォントサイズを調整 */
-        padding: 5px; /* カラム内のパディングを調整 */
+        font-size: 14px; /* カラム内のフォントサイズを調整 */
+        padding: 8px; /* カラム内のパディングを調整 */
+    }
+
+    .styled-table a {
+        text-decoration: none; /* リンクの下線を削除 */
+        color: #0066cc; /* リンクのテキスト色を変更 */
+    }
+
+    .styled-table a:hover {
+        text-decoration: underline; /* リンクをホバー時に下線表示 */
+    }
+
+    .styled-button {
+        background-color: #ff6b6b;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-weight: bold;
+        text-transform: uppercase; /* ボタンのテキストを大文字に */
     }
 </style>
 </head>
 <body>
 <form action="CreateQuestion" method="get">
-    <input type="submit" value="新しい質問を作成">
+    <input class="styled-button" type="submit" value="新しい質問を作成">
 </form>
 <br> 
 <table class="styled-table">
@@ -49,7 +68,7 @@
         <c:forEach var="question" items="${questions}">
             <tr>
                 <td class="small-column">${question.id}</td>
-                <td>${question.title}</td>
+                <td><a href="ShowQuestion?id=${question.id}">${question.title}</a></td>
                 <td class="small-column">${question.user.name}</td>
             </tr>
         </c:forEach>

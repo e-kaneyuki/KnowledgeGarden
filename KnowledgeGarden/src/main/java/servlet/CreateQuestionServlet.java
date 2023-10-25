@@ -10,56 +10,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Registration;
-import model.RegistrationLogic;
-
+import model.QuestionLogic;
+import model.QuestionRegistration;
 /**
- * Servlet implementation class UserRegisatrationServlet
+ * Servlet implementation class CreateQuestionServlet
  */
-@WebServlet("/UserRegistrationServlet")
-public class UserRegistrationServlet extends HttpServlet {
+@WebServlet("/CreateQuestion")
+public class CreateQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/userRegistration.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/createQuestion.jsp");
 		dispatcher.forward(request, response);
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		int userID = (int) session.getAttribute("userID");
 		//文字化け対策
 		request.setCharacterEncoding("utf-8");
 		//文字化け対策した上で変数セット
-		int userID = Integer.parseInt(request.getParameter("userID"));
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("password");
-        
-        //BOクラスでDAOクラスでDBへinsertできたかをjudgeする。
-		RegistrationLogic regiLogic = new RegistrationLogic();
-		Registration reg = new Registration(userID, userName, password);
-		boolean judge = regiLogic.execute(reg);
+		String title = request.getParameter("questionTitle");
+        String content = request.getParameter("questionContent");
 		
-		//もしINSERTできていたらsessionスコープを作成し質問投稿画面へ遷移
+        QuestionLogic logic = new QuestionLogic();
+        QuestionRegistration queRegist = new QuestionRegistration(title, content, userID);
+		boolean judge = logic.execute(queRegist);
+		
 		if (judge) {
-			HttpSession session = request.getSession();
-	        session.setAttribute("userID", userID);
-	        session.setAttribute("userName", userName);
-	        session.setAttribute("password", password);
-	        
+			
 	        //ここで次のサーブレットへリダイレクト
 	        response.sendRedirect("IndexQuestion");
 	        
 		}
-		//もし登録に失敗した場合はどうするのか	
-	    
-		
-        
-		
 	}
 
 }

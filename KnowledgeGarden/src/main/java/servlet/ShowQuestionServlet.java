@@ -10,29 +10,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.IndexQuestionLogic;
+import model.Answer;
+import model.AnswerLogic;
 import model.Question;
+import model.QuestionLogic;
 
 /**
- * Servlet implementation class QuestionIndexServlet
+ * Servlet implementation class ShowQuestion
  */
-@WebServlet("/QuestionIndex")
-public class QuestionIndexServlet extends HttpServlet {
+@WebServlet("/ShowQuestion")
+public class ShowQuestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		IndexQuestionLogic queLogic = new IndexQuestionLogic();
-		List<Question> questions = queLogic.execute();
-		request.setAttribute("questions", questions);
-		
-//		for (Question question: questions) {
-//			System.out.println(question.getUser());
-//		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/questionIndex.jsp");
+		// パラメータ "id" を取得
+        int id = Integer.parseInt(request.getParameter("id"));
+        List<Answer> ansList = null;
+        
+        QuestionLogic queLog = new QuestionLogic();
+        Question question = queLog.showQuestion(id);
+        request.setAttribute("question", question);
+        
+        AnswerLogic ansLog = new AnswerLogic();
+        ansList = ansLog.findAnswerById(id);
+        for(Answer ans: ansList) {
+        	System.out.println(ans.getContent());
+        }
+        if(ansList != null) {
+        	request.setAttribute("ansList", ansList);	
+        }
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/showQuestion.jsp");
 		dispatcher.forward(request, response);
 	}
 
