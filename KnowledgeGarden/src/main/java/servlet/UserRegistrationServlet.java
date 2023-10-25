@@ -56,10 +56,6 @@ public class UserRegistrationServlet extends HttpServlet {
 	        
 		}
 		//もし登録に失敗した場合はどうするのか	
-	    
-		
-        
-		
 	}
 
 }
