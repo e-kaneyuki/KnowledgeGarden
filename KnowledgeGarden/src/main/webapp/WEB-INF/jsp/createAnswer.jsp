@@ -73,26 +73,27 @@
     <p>質問者: ${question.user.name}</p>
 
     <h2>回答作成</h2>
-    <form action="CreateAnswer" method="post">
-        <div class="form-group">
-            <label for="answerAuthor">回答者:</label>
-            <span><%= session.getAttribute("userName") %></span>
-        </div>
-        <div class="form-group">
-            <label for="answerContent">回答本文:</label>
-            <textarea id="answerContent" name="answerContent" rows="5" required></textarea>
-        </div>
-        <div class="back-button">
-            <button type="button" onclick="goBack()" class="styled-button">戻る</button>
-            <input type="hidden" name="questionId" value="${question.id}">
-            <input type="submit" value="投稿" class="styled-button">
-        </div>
-    </form>
+<form action="CreateAnswer" method="post">
+    <div class="form-group">
+        <label for="answerAuthor">回答者:</label>
+        <span><%= session.getAttribute("userName") %></span>
+    </div>
+    <div class="form-group">
+        <label for="answerContent">回答本文:</label>
+        <textarea id="answerContent" name="answerContent" rows="5" required></textarea>
+    </div>
+    <div class="back-button">
+        <input type="hidden" name="questionId" value="${question.id}">
+        <input type="submit" value="投稿" class="styled-button">
+    </div>
+</form>
+
+<form action="ShowQuestion" method="get">
+    <input type="hidden" name="id" value="${question.id}">
+    <input type="submit" value="質問一覧へ" class="styled-button" style="margin-top: 10px;">
+</form>
+
 </div>
-<script>
-    function goBack() {
-        window.history.back();
-    }
-</script>
+
 </body>
 </html>

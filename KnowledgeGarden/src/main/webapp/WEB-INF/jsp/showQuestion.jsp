@@ -40,13 +40,11 @@
 <body>
     <table>
         <tr>
-            <th>質問ID</th>
             <th>質問タイトル</th>
             <th>質問内容</th>
             <th>ユーザー名</th>
         </tr>
         <tr>
-            <td>${question.id}</td>
             <td>${question.title}</td>
             <td>${question.content}</td>
             <td>${question.user.name}</td>
@@ -57,15 +55,13 @@
         <tr>
             <th>回答番号</th>
             <th>回答内容</th>
-            <th>質問ID</th>
-            <th>回答者ID</th>
+            <th>回答者名</th>
         </tr>
         <c:forEach var="answer" items="${ansList}" varStatus="loop">
             <tr>
                 <td>${loop.index + 1}</td>
                 <td>${answer.content}</td>
-                <td>${answer.questionId}</td>
-                <td>${answer.answererId}</td>
+                <td>${answer.answererName}</td>
             </tr>
         </c:forEach>
     </table>
@@ -74,5 +70,8 @@
         <input type="hidden" name="questionId" value="${question.id}">
         <input type="submit" value="回答作成">
     </form>
+    <form action="IndexQuestion" method="Get">
+    	<input type="submit" value="一覧へ">
+	</form>
 </body>
 </html>
