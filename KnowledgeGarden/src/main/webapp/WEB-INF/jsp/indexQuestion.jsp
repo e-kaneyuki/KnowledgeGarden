@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QuestionIndex</title>
+<title>質問一覧</title>
 <style>
     .styled-table {
         width: 80%; /* テーブルの幅を調整 */

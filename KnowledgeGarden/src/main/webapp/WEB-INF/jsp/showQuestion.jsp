@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>可愛いページ</title>
+    <title>質問詳細</title>
     <style>
         body {
             font-family: Arial, sans-serif;
