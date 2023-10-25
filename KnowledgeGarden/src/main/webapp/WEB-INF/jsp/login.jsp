@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ログイン画面</title>
+    <title>ログイン</title>
     <style>
         body {
             font-family: Arial, sans-serif;
