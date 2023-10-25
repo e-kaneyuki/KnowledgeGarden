@@ -7,12 +7,21 @@ public class Answer implements Serializable {
 	private String content;
 	private int answererId;
 	private int questionId;
+	private String answererName;
 	
 	public Answer(int id, String content,int answererId, int questionId) {
 		this.id = id;
 		this.content = content;
 		this.answererId = answererId;
 		this.questionId = questionId;
+	}
+
+	public Answer(int id, String content,int answererId, int questionId, String answererName) {
+		this.id = id;
+		this.content = content;
+		this.answererId = answererId;
+		this.questionId = questionId;
+		this.answererName = answererName;
 	}
 
 	public int getId() {
@@ -31,6 +40,8 @@ public class Answer implements Serializable {
 		return questionId;
 	}
 	
-	
+	public String getAnswererName() {
+		return answererName;
+	}	
 	
 }

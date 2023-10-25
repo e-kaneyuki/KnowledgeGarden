@@ -25,13 +25,12 @@ public class IndexQuestionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
+		
 		QuestionLogic queLogic = new QuestionLogic();
 		List<Question> questions = queLogic.execute();
 		request.setAttribute("questions", questions);
 		
-//		for (Question question: questions) {
-//			System.out.println(question.getUser());
-//		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/indexQuestion.jsp");
 		dispatcher.forward(request, response);
 	}

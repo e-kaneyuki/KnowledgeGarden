@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>質問登録</title>
+    <title>質問投稿</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -28,7 +28,7 @@
         }
         input[type="text"],
         textarea {
-            width: 80%;
+            width: 100%;
             padding: 10px;
             margin: 5px 0;
             border: 1px solid #ddd;
@@ -55,37 +55,33 @@
             text-align: left;
             margin-top: 20px;
         }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
-    <h1>質問投稿フォーム</h1>
-    <form action="CreateQuestion" method="post">
-        <div class="form-group">
-            <label for="questionTitle">質問タイトル:</label>
-            <input type="text" id="questionTitle" name="questionTitle" required>
-        </div>
-        <div class="form-group">
-            <label for="questionAuthor">質問者:</label>
-            <span><%= session.getAttribute("userName") %></span>
-        </div>
-        <div class="form-group">
-            <label for="questionContent">質問本文:</label>
-            <textarea id="questionContent" name="questionContent" rows="5" required></textarea>
-        </div>
-        <div class="back-button">
-        	<button onclick="goBack()">戻る</button>
-        	<input type="submit" value="投稿">
-    	</div>
-    </form>
-
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+<h1>質問投稿フォーム</h1>
+<form action="CreateQuestion" method="post">
+    <div class="form-group">
+        <label for="questionTitle">質問タイトル:</label>
+        <input type="text" id="questionTitle" name="questionTitle" required>
+    </div>
+    <div class="form-group">
+        <label for="questionAuthor">質問者:</label>
+        <span><%= session.getAttribute("userName") %></span>
+    </div>
+    <div class="form-group">
+        <label for="questionContent">質問本文:</label>
+        <textarea id="questionContent" name="questionContent" rows="5" required></textarea>
+    </div>
+    <div class="button-container">
+        <input type="submit" value="投稿">
+        <a href="IndexQuestion" class="button-link">質問一覧へ</a>
+    </div>
+</form>
 </body>
 </html>
-
-
-
 

@@ -62,7 +62,7 @@
         <div class="error-message" id="passwordMismatch" style="display: none;">
             パスワードとパスワード再確認が一致しません。
         </div>
-        <form action="loginServlet" method="post" onsubmit="return validateForm();">
+        <form action="Login" method="post" onsubmit="return validateForm();">
             <div class="form-group">
                 <label for="userID">ID:</label>
                 <input type="text" id="userID" name="userID" required>

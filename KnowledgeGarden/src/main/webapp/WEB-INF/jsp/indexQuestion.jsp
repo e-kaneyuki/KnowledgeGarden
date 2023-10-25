@@ -65,9 +65,9 @@
         </tr>
     </thead>
     <tbody>
-        <c:forEach var="question" items="${questions}">
+        <c:forEach var="question" items="${questions}" varStatus="loop">
             <tr>
-                <td class="small-column">${question.id}</td>
+                <td>${loop.index + 1}</td>
                 <td><a href="ShowQuestion?id=${question.id}">${question.title}</a></td>
                 <td class="small-column">${question.user.name}</td>
             </tr>
