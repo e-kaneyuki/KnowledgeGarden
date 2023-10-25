@@ -57,9 +57,11 @@
         }
         .button-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
         }
+        .button-container button {
+        margin: 0 5px; /* Add some horizontal margin for spacing */
+    }
     </style>
 </head>
 <body>
@@ -78,8 +80,8 @@
         <textarea id="questionContent" name="questionContent" rows="5" required></textarea>
     </div>
     <div class="button-container">
-        <input type="submit" value="投稿">
-        <a href="IndexQuestion" class="button-link">質問一覧へ</a>
+        <button type="button" onclick="location.href='IndexQuestion'">質問一覧へ</button>
+        <button type="submit">投稿</button>
     </div>
 </form>
 </body>
