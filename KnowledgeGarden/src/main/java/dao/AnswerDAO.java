@@ -24,16 +24,19 @@ public class AnswerDAO {
 		
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)){
 			
-			String sql = "SELECT"
-					 +" A.ID,"
-			         +" A.CONTENT,"
-			         +" A.ANSWERER_ID,"
-			         +" A.QUESTION_ID"
-			         +" FROM"
-			         +" ANSWERS A"
-			         +" WHERE"
-			         +" A.QUESTION_ID = "
-			         + queId;
+			String sql = "SELECT" 
+				+ " A.ID,"
+				+ " A.CONTENT,"
+				+ " A.ANSWERER_ID,"
+				+ " A.QUESTION_ID," 
+				+ " U.NAME"
+				+ " FROM" 
+				+ " ANSWERS A" 
+				+ " INNER JOIN" 
+				+ " USERS U ON A.ANSWERER_ID = U.ID" 
+				+ " WHERE" 
+				+ " A.QUESTION_ID ="
+				+ queId;
 
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -46,8 +49,8 @@ public class AnswerDAO {
 				String AnswerContent = rs.getString("CONTENT");
 				int AnswererId = rs.getInt("ANSWERER_ID");
 				int questionId = rs.getInt("QUESTION_ID");
-
-				Answer answer = new Answer(AnswerId, AnswerContent, AnswererId, questionId);
+				String AnswererName = rs.getString("NAME");
+				Answer answer = new Answer(AnswerId, AnswerContent, AnswererId, questionId, AnswererName);
 				answers.add(answer);
 			}
 			
