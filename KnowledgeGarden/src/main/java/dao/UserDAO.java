@@ -37,4 +37,40 @@ public class UserDAO {
 		return rowsCount;
 	}
 	
+	//SELECT
+	public User authenticate(int userId, String password) {
+		User user = null;		
+		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)){
+			String sql = "SELECT"
+					+ " ID,"
+					+ " NAME,"
+					+ " PASSWORD"
+					+ " FROM"
+					+ " Users"
+					+ " WHERE"
+					+ " ID = ?"
+					+ " AND"
+					+ " PASSWORD = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, userId);  // 1番目の?にuserIdの値をセット
+			pStmt.setString(2, password);  // 2番目の?にpasswordの値をセット
+
+			
+			ResultSet rs = pStmt.executeQuery();
+			if (rs.next()) {
+				int id = rs.getInt("ID");
+				String name = rs.getString("NAME");
+				String pass = rs.getString("PASSWORD");
+				
+				user = new User(id, name, pass);
+				
+			}
+			return user;
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
 }
