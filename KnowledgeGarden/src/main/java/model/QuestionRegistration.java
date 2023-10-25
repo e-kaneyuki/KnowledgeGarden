@@ -1,6 +1,8 @@
 package model;
 
-public class QuestionRegistration {
+import java.io.Serializable;
+
+public class QuestionRegistration implements Serializable{
 	private String title;
 	private String content;
 	private int userId;
