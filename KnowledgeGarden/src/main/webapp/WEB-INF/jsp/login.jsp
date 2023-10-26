@@ -1,58 +1,60 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ログイン</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            background-color: #f9f9f9; /* 背景色を明るいグレーに設定 */
+            font-family: "Arial", sans-serif;
         }
-
         .login-container {
-            width: 500px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
             margin: 0 auto;
-            text-align: center;
         }
-
+        h2 {
+            color: black;
+        }
         .error-message {
-            color: red;
-            font-size: 14px;
-            text-align: center;
-            margin-bottom: 10px; /* 下部のマージンを追加 */
+            color: #ff0000;
+            display: none;
         }
-
         .form-group {
-            display: flex;
-            align-items: center; /* ラベルとフォームの縦方向の中央揃え */
-            margin-bottom: 15px;
+            margin: 10px 0;
+            text-align: left;
         }
-
-        .form-group label {
-            width: 150px; /* ラベルの固定幅を設定 */
-            text-align: right;
-            margin-right: 10px;
+        label {
+            display: block;
+            color: #333; /* テキストカラーを通常の黒に設定 */
         }
-
-        .form-group label {
-            text-align: left; /* ラベルの文字を左揃えに変更 */
-        }
-
-        .form-group input {
-            flex: 1; /* フォームを残りの幅いっぱいに広げる */
+        input {
+            width: 90%;
             padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #ccc; /* 枠線の色をグレーに設定 */
             border-radius: 5px;
         }
-
         .button-container {
-            display: flex;
-            justify-content: flex-end;
+            text-align: center;
+            margin-top: 20px;
         }
-
-        .button-container button {
-            margin-left: 10px;
+        button {
+            background-color: #ff5983;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ff3551;
         }
     </style>
 </head>
@@ -72,9 +74,8 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="button-container">
-	            <button type="button" onclick="location.href='UserRegistrationServlet'">ユーザー登録</button>
+                <button type="button" onclick="location.href='UserRegistrationServlet'">ユーザー登録</button>
                 <button type="submit">ログイン</button>
-                
             </div>
         </form>
     </div>

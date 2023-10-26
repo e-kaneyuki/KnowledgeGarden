@@ -60,6 +60,7 @@
     .button-container {
         display: flex;
         justify-content: space-between;
+        align-items: center; /* Vertically center items */
     }
 </style>
 </head>
@@ -70,6 +71,7 @@
             <input class="styled-button" type="submit" value="新しい質問を作成">
         </form>
         <div><!-- This empty div creates space between the button and the table --></div>
+        <a href="Logout">ログアウト</a>
     </div>
     <br> 
     <table class="styled-table">
@@ -93,5 +95,3 @@
 </div>
 </body>
 </html>
-
-
