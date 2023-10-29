@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
+<%
+    String loginMessage = (String) session.getAttribute("loginMessage");
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,15 +62,30 @@
     </style>
 </head>
 <body>
+	<%
+	if (loginMessage != null && !loginMessage.isEmpty()) {
+	%>
+	        <script>
+	            alert("<%= loginMessage %>");
+	        </script>
+	        <% session.removeAttribute("loginMessage"); %>
+	<%
+	    }
+	%>
     <div class="login-container">
+    
         <h2>ログイン</h2>
-        <div class="error-message" id="passwordMismatch" style="display: none;">
-            パスワードとパスワード再確認が一致しません。
-        </div>
+        <c:if test="${not empty passwordErrorMessage}">
+        	<div style="color:red;">${passwordErrorMessage}</div>
+    	</c:if>
         <form action="Login" method="post" onsubmit="return validateForm();">
-            <div class="form-group">
+       		<div class="form-group">
                 <label for="userID">ID:</label>
                 <input type="text" id="userID" name="userID" required>
+            </div>
+            <div class="form-group">
+                <label for="userName">ユーザー名:</label>
+                <input type="text" id="userName" name="userName" required>
             </div>
             <div class="form-group">
                 <label for="password">パスワード:</label>

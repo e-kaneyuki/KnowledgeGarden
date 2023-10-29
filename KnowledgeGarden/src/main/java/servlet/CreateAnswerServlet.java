@@ -27,6 +27,15 @@ public class CreateAnswerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		String user = (String) session.getAttribute("userName");
+		if (user == null) {
+			String message = "ログインしてください。";
+			session.setAttribute("loginMessage", message);
+			response.sendRedirect("Login");
+			return;
+		}
+		
         int id = Integer.parseInt(request.getParameter("questionId"));
 
         

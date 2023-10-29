@@ -101,28 +101,30 @@
 <body>
 <script>
 	function openWindow() {
-	    window.open('Search', '小窓', 'width=400,height=300');
+	    window.open('Search', '小窓', 'width=400,height=300, left=50,top=165');
 	}
 	
 	function handleDataFromChild(textValue) {
-	    // ここでデータを受け取り、POSTリクエストを行います
-	    const formData = new FormData();
-	    formData.append('searchTerm', textValue);
-
-	    const form = document.createElement('form');
+		const form = document.createElement('form');
+	    
+	    // formの基本設定
 	    form.method = 'POST';
 	    form.action = '/KnowledgeGarden/Search';
 	    form.style.display = 'none';
 	    
-	    for (const [key, value] of formData) {
-	      const input = document.createElement('input');
-	      input.type = 'hidden';
-	      input.name = 'searchTerm';
-	      input.value = textValue;
-	      form.appendChild(input);
-	    }
+	    // hiddenのinput要素を作成して、受け取ったtextValueを値として設定
+	    const input = document.createElement('input');
+	    input.type = 'hidden';
+	    input.name = 'searchTerm';
+	    input.value = textValue;
 	    
+	    // inputをformに追加
+	    form.appendChild(input);
+	    
+	    // formをページに追加
 	    document.body.appendChild(form);
+	    
+	    // formを自動的に送信
 	    form.submit();
 	}
 
