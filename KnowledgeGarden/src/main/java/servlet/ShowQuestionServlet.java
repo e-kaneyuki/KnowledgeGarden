@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Answer;
 import model.AnswerLogic;
@@ -26,6 +27,16 @@ public class ShowQuestionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		String user = (String) session.getAttribute("userName");
+		if (user == null) {
+			String message = "ログインしてください。";
+			session.setAttribute("loginMessage", message);
+			response.sendRedirect("Login");
+			return;
+		}
+		
 		// パラメータ "id" を取得
         int id = Integer.parseInt(request.getParameter("id"));
         List<Answer> ansList = null;
