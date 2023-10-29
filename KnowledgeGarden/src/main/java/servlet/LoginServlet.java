@@ -31,12 +31,14 @@ public class LoginServlet extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		int userId = Integer.parseInt(request.getParameter("userID"));
+		String userName = request.getParameter("userName");
         String password = request.getParameter("password");
-        
-        UserLogic userLog = new UserLogic();
-        User user = userLog.login(userId, password);
 
+        UserLogic userLog = new UserLogic();
+//        User user = userLog.login(userId, password);
+        User user = userLog.login(userId, userName, password);
         if (user != null) {
             // 認証成功
             HttpSession session = request.getSession();
@@ -47,11 +49,10 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("IndexQuestion"); // ログイン後のページにリダイレクト
         } else {
             // 認証失敗
-            request.setAttribute("message", "ユーザー名またはパスワードが正しくありません。");
+            request.setAttribute("passwordErrorMessage", "入力値が正しくありません。");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
             dispatcher.forward(request, response);
         }
-        
 	}
 
 }
