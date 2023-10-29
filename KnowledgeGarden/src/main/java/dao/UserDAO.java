@@ -38,7 +38,7 @@ public class UserDAO {
 	}
 	
 	//SELECT
-	public User authenticate(int userId, String password) {
+	public User authenticate(int userID, String userName, String password) {
 		User user = null;		
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)){
 			String sql = "SELECT"
@@ -50,10 +50,15 @@ public class UserDAO {
 					+ " WHERE"
 					+ " ID = ?"
 					+ " AND"
+					+ " Name = ?"
+					+ " AND"
 					+ " PASSWORD = ?";
+			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setInt(1, userId);  // 1番目の?にuserIdの値をセット
-			pStmt.setString(2, password);  // 2番目の?にpasswordの値をセット
+			pStmt.setInt(1, userID);  // 1番目の?にuserIDの値をセット
+			pStmt.setString(2, userName);  // 2番目の?にuserNameの値をセット
+			pStmt.setString(3, password);  // 3番目の?にpasswordの値をセット
+
 
 			
 			ResultSet rs = pStmt.executeQuery();
