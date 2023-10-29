@@ -96,6 +96,7 @@
             top: 20px; /* 上からの距離を調整 */
             right: 20px; /* 右からの距離を調整 */
         }
+        
     </style>
 </head>
 <body>
@@ -139,23 +140,30 @@
             <button type="button" onclick="window.location.href = 'IndexQuestion'" class="styled-button">全てを表示</button>
         </form>
         <table class="styled-table">
-            <thead>
-                <tr>
-                    <th class="small-column">No.</th>
-                    <th>質問</th>
-                    <th class="small-column">質問者</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="question" items="${questions}" varStatus="loop">
-                    <tr>
-                        <td>${loop.index + 1}</td>
-                        <td><a href="ShowQuestion?id=${question.id}">${question.title}</a></td>
-                        <td class="small-column">${question.user.name}</td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+    <thead>
+        <tr>
+            <th class="small-column">No.</th>
+            <th>質問</th>
+            <th class="small-column">質問者</th>
+            <th class="small-column">削除</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="question" items="${questions}" varStatus="loop">
+            <tr>
+                <td>${loop.index + 1}</td>
+                <td><a href="ShowQuestion?id=${question.id}">${question.title}</a></td>
+                <td class="small-column">${question.user.name}</td>
+                <td class="small-column">
+                    <form action="Delete" method="post">
+                        <input type="hidden" name="id" value="${question.id}">
+                        <button type="submit">削除</button>
+                    </form>
+                </td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
         <div class="button-container">
              <button type="button" onclick="window.location.href = 'CreateQuestion'" class="styled-button">新しい質問を作成</button>
             <button type="button" class="styled-button" onclick="openWindow()">検索</button>

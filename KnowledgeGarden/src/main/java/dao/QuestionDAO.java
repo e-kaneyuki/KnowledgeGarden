@@ -131,4 +131,27 @@ public class QuestionDAO {
 		}
 		return rowsCount;
 	}
+	
+//	DELETEする
+	public int deleteQuestion(int questionId) {
+//		Question question = null;
+		int rowsCount = 0;
+		
+		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)){
+			String sql = "DELETE"
+					+ " FROM"
+					+ " QUESTIONS"
+					+ " WHERE"
+					+ " ID = ?";
+					
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, questionId);
+			
+			rowsCount = pStmt.executeUpdate();
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rowsCount;
+	}
 }
